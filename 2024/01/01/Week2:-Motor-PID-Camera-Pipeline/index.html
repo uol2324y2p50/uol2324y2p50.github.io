@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Linxuan Biao, Ce Wang, Chaoshuo Han, Jingyi Liu, Lu Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="We solved the problems for week 1 and this week we will focus on how to get the vehicle to move successfully. Documentation Progress Use the App called canva to design the poster.  Hardware Part Weekl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week2: Motor &amp; PID &amp; Camera Pipeline">
+<meta property="og:url" content="https://uol2324y2p50.github.io/2024/01/01/Week2:-Motor-PID-Camera-Pipeline/index.html">
+<meta property="og:site_name" content="PIAGV">
+<meta property="og:description" content="We solved the problems for week 1 and this week we will focus on how to get the vehicle to move successfully. Documentation Progress Use the App called canva to design the poster.  Hardware Part Weekl">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://uol2324y2p50.github.io/img/digram-blur.png">
+<meta property="article:published_time" content="2024-01-01T00:00:04.000Z">
+<meta property="article:modified_time" content="2024-02-29T07:48:58.717Z">
+<meta property="article:author" content="Linxuan Biao, Ce Wang, Chaoshuo Han, Jingyi Liu, Lu Chen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://uol2324y2p50.github.io/img/digram-blur.png">
+  
+  
+  
+  <title>Week2: Motor &amp; PID &amp; Camera Pipeline - PIAGV</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"uol2324y2p50.github.io","root":"/","version":"1.9.7","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PIAGV</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/../img/digram-blur.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Week2: Motor & PID & Camera Pipeline</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Linxuan Biao, Ce Wang, Chaoshuo Han, Jingyi Liu, Lu Chen
+      </span>
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Week2: Motor &amp; PID &amp; Camera Pipeline</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>We solved the problems for week 1 and this week we will focus on how to get the vehicle to move successfully.</p>
+<h1 id="Documentation-Progress"><a href="#Documentation-Progress" class="headerlink" title="Documentation Progress"></a>Documentation Progress</h1><ul>
+<li>Use the App called canva to design the poster.</li>
+</ul>
+<h1 id="Hardware-Part-Weekly-Progress"><a href="#Hardware-Part-Weekly-Progress" class="headerlink" title="Hardware Part Weekly Progress"></a>Hardware Part Weekly Progress</h1><p>The wiring diagram of Arduino<br><img src="/../img/wiring1.png" srcset="/img/loading.gif" lazyload alt="arduino wiring 1"><br><img src="/../img/wiring2.png" srcset="/img/loading.gif" lazyload alt="arduino wiring 2"></p>
+<h1 id="Embedded-Part-Weekly-Progress"><a href="#Embedded-Part-Weekly-Progress" class="headerlink" title="Embedded Part Weekly Progress"></a>Embedded Part Weekly Progress</h1><p>The framework diagram of code for Arduino<br><img src="/../img/digram.png" srcset="/img/loading.gif" lazyload alt="arduino digram"></p>
+<p>Complete the code of the car drive and basic positioning system. Connect and test the motherboard, ensuring a successful connection with the computer to confirm the proper functionality of the vehicle drive.<br><img src="/../img/week2-1.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>The output from the encoder as the wheel rotates.<br><video style="width:100%;height:auto;" controls><br>  <source src="/video/week2-1.webm" type="video/webm"><br>  Your browser does not support the video tag.<br></video></p>
+<p>Test the wheels to see if they turn properly one by one.<br><video style="width:100%;height:auto;" controls><br>  <source src="/video/week2-2.webm" type="video/webm"><br>  Your browser does not support the video tag.<br></video></p>
+<p>Test whether all four wheels rotate properly at the same time.<br><video style="width:100%;height:auto;" controls><br>  <source src="/video/week2-3.webm" type="video/webm"><br>  Your browser does not support the video tag.<br></video></p>
+<p>The vehicle is moving forward successfully.<br><video style="width:100%;height:auto;" controls><br>  <source src="/video/week2-4.webm" type="video/webm"><br>  Your browser does not support the video tag.<br></video></p>
+<h1 id="ROS-Part-Weekly-Progress"><a href="#ROS-Part-Weekly-Progress" class="headerlink" title="ROS Part Weekly Progress"></a>ROS Part Weekly Progress</h1><p>Using Camera calibration package to get the internal parameters of the Logitech C270 camera<br><img src="/../img/camera_calibration.png" srcset="/img/loading.gif" lazyload alt="camera calibration"></p>
+<p>Tested the apriltag detection program<br><img src="/../img/apriltag.png" srcset="/img/loading.gif" lazyload alt="apriltag detection demo"></p>
+<h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><ul>
+<li><p>Wheel Installation Issue: During the testing of the four wheels, we found that one of the wheels rotates in the opposite direction compared to the other wheels. We reinstalled the wheels to ensure that all wheels rotate in the same direction.</p>
+</li>
+<li><p>Code Debugging: The control code underwent thorough scrutiny and refinement to ensure seamless synchronization between software control and hardware functionality.</p>
+</li>
+</ul>
+<h1 id="Week-3-Plan"><a href="#Week-3-Plan" class="headerlink" title="Week 3 Plan"></a>Week 3 Plan</h1><ul>
+<li><p>Integration of hardware and software.</p>
+</li>
+<li><p>Establish communication protocols to enable computer control of the vehicle.</p>
+</li>
+<li><p>Install a camera on the top of the car.</p>
+</li>
+<li><p>Complete the design of the poster and start the writing of the introduction part of the poster.</p>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Week2: Motor &amp; PID &amp; Camera Pipeline</div>
+      <div>https://uol2324y2p50.github.io/2024/01/01/Week2:-Motor-PID-Camera-Pipeline/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Linxuan Biao, Ce Wang, Chaoshuo Han, Jingyi Liu, Lu Chen</div>
+        </div>
+      
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - Non-commercial">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/01/Week3:-Redo-Wiring-Odometry-Communication/" title="Week3: Redo Wiring &amp; Odometry &amp; Communication">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Week3: Redo Wiring &amp; Odometry &amp; Communication</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/01/Week1:-Timeline-Chassis-Assembly-Environment-Setup/" title="Week1: Timeline &amp; Chassis Assembly &amp; Environment Setup">
+                        <span class="hidden-mobile">Week1: Timeline &amp; Chassis Assembly &amp; Environment Setup</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

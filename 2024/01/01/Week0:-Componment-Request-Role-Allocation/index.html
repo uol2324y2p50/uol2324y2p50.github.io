@@ -1,0 +1,668 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Linxuan Biao, Ce Wang, Chaoshuo Han, Jingyi Liu, Lu Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Componment SelectionOnboard PCRaspberry PI 5 4GB RPI4 is also acceptable for limited budget, but better performance means higher frame rates. link   £59.51 Inc. VAT  Official Raspberry Pi 5 Case, Red">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week0: Componment Request &amp; Role Allocation">
+<meta property="og:url" content="https://uol2324y2p50.github.io/2024/01/01/Week0:-Componment-Request-Role-Allocation/index.html">
+<meta property="og:site_name" content="PIAGV">
+<meta property="og:description" content="Componment SelectionOnboard PCRaspberry PI 5 4GB RPI4 is also acceptable for limited budget, but better performance means higher frame rates. link   £59.51 Inc. VAT  Official Raspberry Pi 5 Case, Red">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://uol2324y2p50.github.io/img/rpi-shop.png">
+<meta property="article:published_time" content="2024-01-01T00:00:02.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:32:41.167Z">
+<meta property="article:author" content="Linxuan Biao, Ce Wang, Chaoshuo Han, Jingyi Liu, Lu Chen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://uol2324y2p50.github.io/img/rpi-shop.png">
+  
+  
+  
+  <title>Week0: Componment Request &amp; Role Allocation - PIAGV</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"uol2324y2p50.github.io","root":"/","version":"1.9.7","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PIAGV</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/../img/rpi-shop.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Week0: Componment Request & Role Allocation</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Linxuan Biao, Ce Wang, Chaoshuo Han, Jingyi Liu, Lu Chen
+      </span>
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Week0: Componment Request &amp; Role Allocation</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Componment-Selection"><a href="#Componment-Selection" class="headerlink" title="Componment Selection"></a>Componment Selection</h1><h2 id="Onboard-PC"><a href="#Onboard-PC" class="headerlink" title="Onboard PC"></a>Onboard PC</h2><h3 id="Raspberry-PI-5-4GB"><a href="#Raspberry-PI-5-4GB" class="headerlink" title="Raspberry PI 5 4GB"></a>Raspberry PI 5 4GB</h3><ul>
+<li>RPI4 is also acceptable for limited budget, but better performance means higher frame rates.</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/raspberry-pi/rpi5-4gb-single/raspberry-pi-5-model-b-4gb/dp/SC20210">link</a>  </li>
+<li>£59.51 Inc. VAT</li>
+</ul>
+<h3 id="Official-Raspberry-Pi-5-Case-Red-and-White"><a href="#Official-Raspberry-Pi-5-Case-Red-and-White" class="headerlink" title="Official Raspberry Pi 5 Case, Red and White"></a>Official Raspberry Pi 5 Case, Red and White</h3><ul>
+<li>Optional, but better protection</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/raspberry-pi/sc1159/raspberry-pi-5-case-red-white/dp/SC20198">link</a>  </li>
+<li>£9.92 Inc. VAT</li>
+</ul>
+<h3 id="32GB-UHS-I-U3-Class-10-MicroSDHC-Memory-Card"><a href="#32GB-UHS-I-U3-Class-10-MicroSDHC-Memory-Card" class="headerlink" title="32GB UHS-I U3 Class 10 MicroSDHC Memory Card"></a>32GB UHS-I U3 Class 10 MicroSDHC Memory Card</h3><ul>
+<li>Can be replaced by a lower category one</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/apacer/ap32gmcsh10u4-r/microsdhc-uhs-i-u3-95-85-c10-32gb/dp/MD00832">link</a>  </li>
+<li>£16.19 Inc. VAT</li>
+</ul>
+<h3 id="Dual-Interface-USB-3-1-Gen-1-SD-MicroSD-Card-Reader"><a href="#Dual-Interface-USB-3-1-Gen-1-SD-MicroSD-Card-Reader" class="headerlink" title="Dual Interface USB 3.1 Gen 1 SD &#x2F; MicroSD Card Reader"></a>Dual Interface USB 3.1 Gen 1 SD &#x2F; MicroSD Card Reader</h3><ul>
+<li>Optional, can be borrowed from the lab</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/startech/sdmsdrwu3ac/card-reader-sd-micro-sd-usb-a/dp/MD01340">link</a>  </li>
+<li>£13.66 Inc. VAT</li>
+</ul>
+<h3 id="Raspberry-Pi-4-Micro-HDMI-to-HDMI-Lead-2m-White"><a href="#Raspberry-Pi-4-Micro-HDMI-to-HDMI-Lead-2m-White" class="headerlink" title="Raspberry Pi 4 Micro HDMI to HDMI Lead, 2m White"></a>Raspberry Pi 4 Micro HDMI to HDMI Lead, 2m White</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/raspberry-pi/t7690ax/micro-hdmi-to-hdmi-cable-2m-white/dp/SC15237">link</a>  </li>
+<li>£5.65 Inc. VAT</li>
+</ul>
+<h3 id="XP-POWER-DTJ1524S05-Isolated-Chassis-Mount-DC-DC-Converter-ITE-4-1-15-W-1-Output-5-V-3-A"><a href="#XP-POWER-DTJ1524S05-Isolated-Chassis-Mount-DC-DC-Converter-ITE-4-1-15-W-1-Output-5-V-3-A" class="headerlink" title="XP POWER DTJ1524S05 Isolated Chassis Mount DC&#x2F;DC Converter, ITE, 4:1, 15 W, 1 Output, 5 V, 3 A"></a>XP POWER DTJ1524S05 Isolated Chassis Mount DC&#x2F;DC Converter, ITE, 4:1, 15 W, 1 Output, 5 V, 3 A</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.farnell.com/xp-power/dtj1524s05/dc-dc-converter-5v-3a/dp/3248178">link</a>  </li>
+<li>£28.36 (ex VAT)</li>
+</ul>
+<h2 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a>Camera</h2><p><strong>Requirements:</strong> </p>
+<ul>
+<li>medium pixel count (&gt;&#x3D;1mp)</li>
+<li>high frame rate (&gt;&#x3D;60fps)</li>
+<li>global shutter (to avoid jello effect)</li>
+<li>usb connection</li>
+</ul>
+<p>There are several options…</p>
+<h3 id="Raspberry-Pi-Global-Shutter-Camera"><a href="#Raspberry-Pi-Global-Shutter-Camera" class="headerlink" title="Raspberry Pi Global Shutter Camera"></a>Raspberry Pi Global Shutter Camera</h3><ul>
+<li>CSI connector, need to install some custom kernel driver</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/raspberry-pi/sc0926/rpi-global-shutter-camera/dp/SC20015">link</a></li>
+<li>£49.92 Inc. VAT</li>
+</ul>
+<h3 id="C930e-Full-HD-Webcam-for-Business"><a href="#C930e-Full-HD-Webcam-for-Business" class="headerlink" title="C930e Full HD Webcam for Business"></a>C930e Full HD Webcam for Business</h3><ul>
+<li>90° FOV</li>
+<li>FHD</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/logitech/960-000972/webcam-hd-1080p-pro-c930e/dp/CS29492">link</a></li>
+<li>£111.11 Inc. VAT</li>
+</ul>
+<h3 id="C270-HD-Webcam"><a href="#C270-HD-Webcam" class="headerlink" title="C270 HD Webcam"></a>C270 HD Webcam</h3><ul>
+<li>poor proformance</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/logitech/960-001063/webcam-3mp-hd-c270-logitech/dp/CS30061">link</a></li>
+<li>£25.98 Inc. VAT</li>
+</ul>
+<h2 id="MCU"><a href="#MCU" class="headerlink" title="MCU"></a>MCU</h2><h3 id="Arduino-UNO-SMD-Rev3"><a href="#Arduino-UNO-SMD-Rev3" class="headerlink" title="Arduino UNO SMD Rev3"></a>Arduino UNO SMD Rev3</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/dfrobot/fit0483/dc-geared-motor-brushed-100-1/dp/MC02875">link</a></li>
+<li>£19.97 Inc. VAT * 2</li>
+</ul>
+<h2 id="IMU"><a href="#IMU" class="headerlink" title="IMU"></a>IMU</h2><p>options:</p>
+<h3 id="Adafruit-2472-9-DOF-Absolute-Orientation-Inertial-Measurement-Unit-IMU-Breakout"><a href="#Adafruit-2472-9-DOF-Absolute-Orientation-Inertial-Measurement-Unit-IMU-Breakout" class="headerlink" title="Adafruit 2472 9-DOF Absolute Orientation Inertial Measurement Unit IMU Breakout"></a>Adafruit 2472 9-DOF Absolute Orientation Inertial Measurement Unit IMU Breakout</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.rapidonline.com/adafruit-2472-9-dof-absolute-orientation-inertial-measurement-unit-imu-breakout-75-0494">link</a></li>
+<li>£36.07 (ex VAT)</li>
+</ul>
+<h3 id="DFROBOT-SEN0250-I2C-BMI160-6-Axis-Inertial"><a href="#DFROBOT-SEN0250-I2C-BMI160-6-Axis-Inertial" class="headerlink" title="DFROBOT SEN0250 I2C BMI160 6-Axis Inertial"></a>DFROBOT SEN0250 I2C BMI160 6-Axis Inertial</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.farnell.com/dfrobot/sen0250/i2c-6-axis-motion-sensor-arduino/dp/3517944">link</a></li>
+<li>£8.48 (ex VAT)</li>
+</ul>
+<h2 id="LED"><a href="#LED" class="headerlink" title="LED"></a>LED</h2><h3 id="DFROBOT-DFR0021-W-Add-On-Board-LED-Light-Module-White-Gravity-Series"><a href="#DFROBOT-DFR0021-W-Add-On-Board-LED-Light-Module-White-Gravity-Series" class="headerlink" title="DFROBOT DFR0021-W Add-On Board, LED Light Module, White, Gravity Series"></a>DFROBOT DFR0021-W Add-On Board, LED Light Module, White, Gravity Series</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.farnell.com/dfrobot/dfr0021-w/digital-blue-white-light-module/dp/2946083">link</a></li>
+<li>£1.54 (ex VAT) * 4</li>
+</ul>
+<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><h3 id="DFROBOT-DFR0789-G-LED-Switch-Gravity-Green-Arduino-Board"><a href="#DFROBOT-DFR0789-G-LED-Switch-Gravity-Green-Arduino-Board" class="headerlink" title="DFROBOT DFR0789-G LED Switch, Gravity, Green, Arduino Board"></a>DFROBOT DFR0789-G LED Switch, Gravity, Green, Arduino Board</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.farnell.com/dfrobot/dfr0789-g/led-switch-green-arduino-board/dp/3879672">link</a></li>
+<li>£2.88 (ex VAT) * 2</li>
+</ul>
+<h3 id="DFROBOT-DFR0785-R-LED-Button-Gravity-Red-Arduino-Board"><a href="#DFROBOT-DFR0785-R-LED-Button-Gravity-Red-Arduino-Board" class="headerlink" title="DFROBOT DFR0785-R LED Button, Gravity, Red, Arduino Board"></a>DFROBOT DFR0785-R LED Button, Gravity, Red, Arduino Board</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.farnell.com/dfrobot/dfr0785-r/led-button-arduino-board/dp/3879668">link</a></li>
+<li>£3.24 (ex VAT) * 2</li>
+</ul>
+<h2 id="Motor"><a href="#Motor" class="headerlink" title="Motor"></a>Motor</h2><p>options:</p>
+<h3 id="Micro-Gear-DC-Motor-Brushed-6V-1500rpm"><a href="#Micro-Gear-DC-Motor-Brushed-6V-1500rpm" class="headerlink" title="Micro Gear DC Motor, Brushed, 6V, 1500rpm"></a>Micro Gear DC Motor, Brushed, 6V, 1500rpm</h3><ul>
+<li>order now, available 1&#x2F;1&#x2F;2024</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/dfrobot/fit0483/dc-geared-motor-brushed-100-1/dp/MC02875">link</a></li>
+<li>£12.54 Inc. VAT * 4</li>
+</ul>
+<h3 id="DFROBOT-FIT0458-Micro-DC-Motor-TT-Geared-Encoder-6V-160RPM-120-1-L-Shape"><a href="#DFROBOT-FIT0458-Micro-DC-Motor-TT-Geared-Encoder-6V-160RPM-120-1-L-Shape" class="headerlink" title="DFROBOT FIT0458 Micro DC Motor, TT Geared, Encoder, 6V, 160RPM, 120:1, L Shape"></a>DFROBOT FIT0458 Micro DC Motor, TT Geared, Encoder, 6V, 160RPM, 120:1, L Shape</h3><ul>
+<li>low torque</li>
+<li><a target="_blank" rel="noopener" href="https://uk.farnell.com/dfrobot/fit0458/micro-dc-motor-arduino-board/dp/3879699">link</a></li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/dfrobot/fit0450/dc-geared-motor-brushed-120-1/dp/MC02877">link</a></li>
+<li>£8.50 Inc. VAT * 4</li>
+</ul>
+<h3 id="12V-Gear-DC-Motor-Brushed"><a href="#12V-Gear-DC-Motor-Brushed" class="headerlink" title="12V Gear DC Motor, Brushed"></a>12V Gear DC Motor, Brushed</h3><ul>
+<li>hard to integrate</li>
+<li><a target="_blank" rel="noopener" href="https://cpc.farnell.com/dfrobot/fit0185/dc-geared-motor-brushed-131-1/dp/MC02876">link</a></li>
+<li>£30.38 Inc. VAT * 4</li>
+</ul>
+<h2 id="Motor-Driver"><a href="#Motor-Driver" class="headerlink" title="Motor Driver"></a>Motor Driver</h2><h3 id="DFROBOT-DRI0039-Quad-DC-Motor-Driver-Shield"><a href="#DFROBOT-DRI0039-Quad-DC-Motor-Driver-Shield" class="headerlink" title="DFROBOT DRI0039 Quad DC Motor Driver Shield"></a>DFROBOT DRI0039 Quad DC Motor Driver Shield</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.farnell.com/dfrobot/dri0039/quad-dc-motor-driver-shld-arduino/dp/3769953">link</a></li>
+<li>£12.32 (ex VAT) * 2</li>
+</ul>
+<h2 id="Battery"><a href="#Battery" class="headerlink" title="Battery"></a>Battery</h2><h3 id="Samsung-ICR18650-26F-3-7V-18650-Lithium-Ion-Rechargeable-Battery-2-6Ah"><a href="#Samsung-ICR18650-26F-3-7V-18650-Lithium-Ion-Rechargeable-Battery-2-6Ah" class="headerlink" title="Samsung, ICR18650-26F, 3.7V, 18650, Lithium-Ion Rechargeable Battery, 2.6Ah"></a>Samsung, ICR18650-26F, 3.7V, 18650, Lithium-Ion Rechargeable Battery, 2.6Ah</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.rs-online.com/web/p/speciality-size-rechargeable-batteries/7887261?gb=s">link</a></li>
+<li>£12.48 (ex VAT) * 2</li>
+</ul>
+<h3 id="DFROBOT-FIT0538-Battery-Holder-DC-2-1-Power-Jack-18650-Model-7-4-V-2-Cell"><a href="#DFROBOT-FIT0538-Battery-Holder-DC-2-1-Power-Jack-18650-Model-7-4-V-2-Cell" class="headerlink" title="DFROBOT FIT0538 Battery Holder, DC 2.1 Power Jack, 18650 Model, 7.4 V, 2 Cell"></a>DFROBOT FIT0538 Battery Holder, DC 2.1 Power Jack, 18650 Model, 7.4 V, 2 Cell</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.farnell.com/dfrobot/fit0538/battery-holder-w-2-1-dc-jack-18650/dp/3769936">link</a></li>
+<li>£1.64 (ex VAT) * 2</li>
+</ul>
+<h3 id="Ansmann-1001-0050-Lithium-2-Charger"><a href="#Ansmann-1001-0050-Lithium-2-Charger" class="headerlink" title="Ansmann 1001-0050 Lithium 2 Charger"></a>Ansmann 1001-0050 Lithium 2 Charger</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://uk.rs-online.com/web/p/battery-chargers/1466770?gb=s">link</a></li>
+<li>£13.28 (ex VAT)</li>
+</ul>
+<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><h3 id="Rapid-RW-D40-FF-Jumper-Wire-Ribbon-Dupont-Cable-F-F-40-Way-Ribbon-200mm"><a href="#Rapid-RW-D40-FF-Jumper-Wire-Ribbon-Dupont-Cable-F-F-40-Way-Ribbon-200mm" class="headerlink" title="Rapid RW-D40-FF Jumper Wire Ribbon Dupont Cable F-F 40 Way Ribbon 200mm"></a>Rapid RW-D40-FF Jumper Wire Ribbon Dupont Cable F-F 40 Way Ribbon 200mm</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.rapidonline.com/rapid-rw-d40-ff-jumper-wire-ribbon-dupont-cable-f-f-40-way-ribbon-200mm-34-0684">link</a></li>
+<li>£7.89 (ex VAT) * 2</li>
+</ul>
+<h3 id="Rapid-RW-D40-MM-Jumper-Wire-Ribbon-Dupont-Cable-M-M-40-Way-Ribbon-200mm"><a href="#Rapid-RW-D40-MM-Jumper-Wire-Ribbon-Dupont-Cable-M-M-40-Way-Ribbon-200mm" class="headerlink" title="Rapid RW-D40-MM Jumper Wire Ribbon Dupont Cable M-M 40 Way Ribbon 200mm"></a>Rapid RW-D40-MM Jumper Wire Ribbon Dupont Cable M-M 40 Way Ribbon 200mm</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.rapidonline.com/rapid-rw-d40-mm-jumper-wire-ribbon-dupont-cable-m-m-40-way-ribbon-200mm-34-0688">link</a></li>
+<li>£8.33 (ex VAT) * 2</li>
+</ul>
+<h3 id="R-TECH-341320-Solderless-Breadboard-Transparent-400-Points"><a href="#R-TECH-341320-Solderless-Breadboard-Transparent-400-Points" class="headerlink" title="R-TECH 341320 Solderless Breadboard Transparent 400 Points"></a>R-TECH 341320 Solderless Breadboard Transparent 400 Points</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.rapidonline.com/r-tech-341320-solderless-breadboard-transparent-400-points-34-1320">link</a></li>
+<li>£2.99 (ex VAT) * 2</li>
+</ul>
+<h2 id="Mechanical"><a href="#Mechanical" class="headerlink" title="Mechanical"></a>Mechanical</h2><p><strong>TBD</strong> </p>
+<ul>
+<li>I’m still looking for mecanum&#x2F;omni wheel on supplier website :(</li>
+<li>Structres can be either laser cutting or 3d pringing.</li>
+</ul>
+<h1 id="Role-Allocation"><a href="#Role-Allocation" class="headerlink" title="Role Allocation"></a>Role Allocation</h1><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Role</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linxuan Biao</td>
+<td>Team Leader &amp; ROS Developer</td>
+<td>Oversees project progress, integrates Apriltag and odometry data with ROS 2 for path scheduling.</td>
+</tr>
+<tr>
+<td>Ce Wang</td>
+<td>Embedded Developer</td>
+<td>Programs microcontrollers for motor control and encoder interfacing, integrates IMU data.</td>
+</tr>
+<tr>
+<td>Chaosho Han</td>
+<td>Hardware Developer</td>
+<td>Designs and assembles vehicle hardware, including actuators and sensor integration.</td>
+</tr>
+<tr>
+<td>Lu Chen</td>
+<td>Project Manager</td>
+<td>Manages timelines, resources, and ensures project milestones are met.</td>
+</tr>
+<tr>
+<td>Jingyi Liu</td>
+<td>Technical Writer</td>
+<td>Documents project development, prepares reports, and maintains technical documentation.</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Week0: Componment Request &amp; Role Allocation</div>
+      <div>https://uol2324y2p50.github.io/2024/01/01/Week0:-Componment-Request-Role-Allocation/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Linxuan Biao, Ce Wang, Chaoshuo Han, Jingyi Liu, Lu Chen</div>
+        </div>
+      
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - Non-commercial">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/01/Week1:-Timeline-Chassis-Assembly-Environment-Setup/" title="Week1: Timeline &amp; Chassis Assembly &amp; Environment Setup">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Week1: Timeline &amp; Chassis Assembly &amp; Environment Setup</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/01/Project-Overview/" title="Project Overview">
+                        <span class="hidden-mobile">Project Overview</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
